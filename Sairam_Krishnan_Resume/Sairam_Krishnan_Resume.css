@@ -1,9 +1,13 @@
-.no-preceding-space {
+.no-leading-space {
 	margin-top: -20px;
 }
 
 .no-trailing-space {
 	margin-bottom: -20px;
+}
+
+.small-trailing-space {
+	margin-bottom: 5px;
 }
 
 ul {
@@ -12,7 +16,7 @@ ul {
 }
 
 li {
-    padding-left: 1.28571429em;
+	padding-left: 1.28571429em;
     text-indent: -1.28571429em;
 }
 
