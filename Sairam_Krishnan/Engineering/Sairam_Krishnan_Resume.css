@@ -1,3 +1,7 @@
+.address {
+	float: right;
+}
+
 .no-leading-space {
 	margin-top: -20px;
 }
@@ -8,6 +12,10 @@
 
 .small-trailing-space {
 	margin-bottom: 5px;
+}
+
+a {
+	text-decoration: none !important;
 }
 
 ul {
