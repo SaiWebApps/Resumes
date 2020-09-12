@@ -24,56 +24,53 @@ h1, h2, h3, h4, h5, h6 {
 .sidebar-wrapper {
   background: #A15277;
   position: absolute;
-  right: 0;
+  right: 0px;
   width: 290px;
   height: 100%;
-  color: #fff;
-}
-
-.sidebar-wrapper a {
   color: #fff;
 }
 
 .sidebar-wrapper .profile-container {
   padding: 30px;
   background: rgba(0, 0, 0, 0.2);
-  text-align: center;
   color: #fff;
 }
 
-.sidebar-wrapper .name {
-  font-size: 28px;
+.sidebar-wrapper .profile-container .name {
+  font-size: 30px;
   font-weight: 900;
-  margin-top: 0;
-  margin-bottom: 10px;
+  margin-left: -15px;
+  margin-top: -15px;
+  margin-bottom: 5px;
 }
 
-.sidebar-wrapper .tagline {
+.sidebar-wrapper .profile-container .tagline {
   color: rgba(255, 255, 255, 0.6);
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 400;
-  margin-top: 0;
-  margin-bottom: 0;
+  margin-left: -15px;
+  margin-top: 0px;
+  margin-bottom: 0px;
 }
 
 .sidebar-wrapper .profile-container .contact-container {
-  margin-left: -20px;
+  margin-left: -15px;
   margin-top: 20px;
   margin-bottom: -30px;
   text-align: left;
 }
 
-.sidebar-wrapper .contact-list .svg-inline--fa {
+.sidebar-wrapper .profile-container .contact-container .contact-list .svg-inline--fa {
   margin-right: 5px;
   font-size: 14px;
   vertical-align: middle;
 }
 
-.sidebar-wrapper .contact-list li {
+.sidebar-wrapper .profile-container .contact-container .contact-list li {
   margin-bottom: 3px;
 }
 
-.sidebar-wrapper .contact-list .address {
+.sidebar-wrapper .profile-container .contact-container .contact-list .address {
   white-space: pre;
   text-align: left;
 }
@@ -84,7 +81,7 @@ h1, h2, h3, h4, h5, h6 {
   margin-left: 10px;
 }
 
-.sidebar-wrapper .container-block-title {
+.sidebar-wrapper .container-block .container-block-title {
   text-transform: uppercase;
   font-size: 14px;
   font-weight: 700;
@@ -92,39 +89,34 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 10px;
 }
 
-.sidebar-wrapper .degree {
-  font-size: 14px;
-  margin-top: 0;
-  margin-bottom: 5px;
-}
-
-.sidebar-wrapper .education-container .item {
+.sidebar-wrapper .container-block .education-item {
   margin-bottom: 10px;
 }
 
-.sidebar-wrapper .education-container .meta {
-  color: rgba(255, 255, 255, 0.6);
-  font-weight: 500;
-  margin-bottom: 0px;
+.sidebar-wrapper .container-block .degree {
+  font-size: 14px;
   margin-top: 0;
-  font-size: 14px;
-}
-
-.sidebar-wrapper .desc {
-  color: rgba(255, 255, 255, 0.6);
-}
-
-.sidebar-wrapper .list-md,.list-sm {
-  margin-bottom: 0;
-}
-
-.sidebar-wrapper .list-md li {
-  font-size: 14px;
   margin-bottom: 5px;
 }
 
-.sidebar-wrapper .list-sm li {
-  font-size: 12px;
+.sidebar-wrapper .container-block .meta {
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 500;
+  font-size: 14px;
+  margin-bottom: 0px;
+  margin-top: 0;
+}
+
+.sidebar-wrapper .container-block .desc {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.sidebar-wrapper .container-block .list-sm {
+  margin-bottom: 0;
+}
+
+.sidebar-wrapper .container-block .list-sm li {
+  font-size: 14px;
   margin-bottom: 5px;
 }
 
@@ -136,7 +128,7 @@ h1, h2, h3, h4, h5, h6 {
   padding-right: 300px;
 }
 
-.main-wrapper .section-title {
+.main-wrapper .section .section-title {
   text-transform: uppercase;
   font-size: 18px;
   font-weight: 500;
@@ -146,7 +138,7 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 10px;
 }
 
-.main-wrapper .section-title .icon-holder {
+.main-wrapper .section .section-title .icon-holder {
   width: 30px;
   height: 30px;
   margin-right: 8px;
@@ -166,7 +158,7 @@ h1, h2, h3, h4, h5, h6 {
   top: -8px;
 }
 
-.main-wrapper .section-title .icon-holder .svg-inline--fa {
+.main-wrapper .section .section-title .icon-holder .svg-inline--fa {
   font-size: 14px;
   margin-top: 6px;
 }
@@ -175,21 +167,21 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 25px;
 }
 
-.main-wrapper .upper-row {
+.main-wrapper .section .upper-row {
   position: relative;
   overflow: hidden;
   margin-bottom: -5px;
 }
 
-.main-wrapper .solo {
+.main-wrapper .section .solo {
   margin-bottom: 15px;
 }
 
-.main-wrapper .solo:last-child {
-  margin-bottom: -30px;
+.main-wrapper .section .solo:last-child {
+  margin-bottom: -45px;
 }
 
-.main-wrapper .job-title {
+.main-wrapper .section .upper-row .job-title {
   color: #3F4650;
   font-size: 14px;
   margin-top: 0;
@@ -197,19 +189,19 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 500;
 }
 
-.main-wrapper .time {
+.main-wrapper .section .upper-row .time {
   position: absolute;
   right: 0;
   top: 0;
   color: #97AAC3;
 }
 
-.main-wrapper .company {
+.main-wrapper .section .upper-row .company {
   margin-bottom: 10px;
   color: #97AAC3;
 }
 
 @page {
-  size: auto;
+  size: 8.5in 11in !important;
   margin: 0 !important;
 }
