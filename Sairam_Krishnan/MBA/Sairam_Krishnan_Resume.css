@@ -1,47 +1,34 @@
 body {
   font-family: 'Roboto', sans-serif;
-  color: #545E6C;
-  background: #f5f5f5;
   font-size: 14px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  margin: 0px auto;
+  position: relative;
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
 }
 
-.wrapper {
-  background: #A15277;
-  max-width: 1080px;
-  margin: 0 auto;
-  position: relative;
-  -webkit-box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-  -moz-box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-}
-
 .sidebar-wrapper {
   background: #A15277;
+  color: #fff;
   position: absolute;
   right: 0px;
   width: 290px;
-  height: 100%;
-  color: #fff;
 }
 
 .sidebar-wrapper .profile-container {
-  padding: 30px;
   background: rgba(0, 0, 0, 0.2);
   color: #fff;
+  padding: 30px 0px 30px 30px;
 }
 
 .sidebar-wrapper .profile-container .name {
   font-size: 30px;
   font-weight: 900;
-  margin-left: -15px;
-  margin-top: -15px;
-  margin-bottom: 5px;
+  margin: 0px 0px 5px -15px;
 }
 
 .sidebar-wrapper .profile-container .tagline {
@@ -121,41 +108,37 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .main-wrapper {
-  background: #fff;
-  padding-top: 35px;
-  padding-bottom: 60px;
-  padding-left: 20px;
-  padding-right: 300px;
+  padding: 35px 300px 15px 20px;
 }
 
 .main-wrapper .section .section-title {
-  text-transform: uppercase;
+  color: #6e3852;
   font-size: 18px;
   font-weight: 500;
-  color: #6e3852;
-  position: relative;
   margin-top: 0;
   margin-bottom: 10px;
+  position: relative;
+  text-transform: uppercase;
 }
 
 .main-wrapper .section .section-title .icon-holder {
-  width: 30px;
-  height: 30px;
-  margin-right: 8px;
-  display: inline-block;
-  color: #fff;
+  background: #6e3852;
+  background-clip: padding-box;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  border-radius: 50%;
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
   -ms-border-radius: 50%;
   -o-border-radius: 50%;
-  border-radius: 50%;
-  -moz-background-clip: padding;
-  -webkit-background-clip: padding-box;
-  background-clip: padding-box;
-  background: #6e3852;
+  color: #fff;
   text-align: center;
-  position: relative;
+  display: inline-block;
+  margin-right: 8px;
   top: -8px;
+  position: relative;
+  width: 30px;
+  height: 30px;
 }
 
 .main-wrapper .section .section-title .icon-holder .svg-inline--fa {
@@ -175,10 +158,6 @@ h1, h2, h3, h4, h5, h6 {
 
 .main-wrapper .section .solo {
   margin-bottom: 15px;
-}
-
-.main-wrapper .section .solo:last-child {
-  margin-bottom: -45px;
 }
 
 .main-wrapper .section .upper-row .job-title {
@@ -201,7 +180,13 @@ h1, h2, h3, h4, h5, h6 {
   color: #97AAC3;
 }
 
+@media print {
+  .sidebar-wrapper {
+    height: 100%;
+  }
+}
+
 @page {
-  size: 8.5in 10.99in !important;
+  size: 8.5in 11.0in !important;
   margin: 0 !important;
 }
