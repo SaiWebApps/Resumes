@@ -1,0 +1,10 @@
+# Build artifacts and intermediates
+node_modules/
+*.docx
+*.log
+
+# OS / editor / office cruft
+.DS_Store
+*.tmp
+*.swp
+.~lock.*

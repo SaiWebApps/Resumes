@@ -1,0 +1,9 @@
+{
+  "name": "career-brand-forge-resume-builder",
+  "version": "1.0.0",
+  "description": "Data-driven two-page executive resume builder (docx).",
+  "private": true,
+  "dependencies": {
+    "docx": "^9.0.0"
+  }
+}
