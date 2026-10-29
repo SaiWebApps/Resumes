@@ -1,0 +1,1 @@
+For a complete resume, cover-letter, or speaker-application package, use the `application-package` skill. Let the `application-pack` CLI own run state and release; load the named internal skill only when `next-action.json` requests that stage. A file is final only after `application-pack validate <run-dir>` succeeds.

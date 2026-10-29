@@ -1,0 +1,6 @@
+interface:
+  display_name: "Artifact Change Controller"
+  short_description: "Apply bounded corrections without regressions"
+  default_prompt: "Use $artifact-change-controller to apply this correction while preserving accepted regions."
+policy:
+  allow_implicit_invocation: true

@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Application positioning strategy",
+  "type": "object",
+  "required": ["schema_version", "positioning", "credibility_arc", "proposed_topics", "resume_purpose", "cover_letter_purpose"],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "positioning": {"type": "string", "minLength": 1},
+    "credibility_arc": {"type": "array", "items": {"type": "string"}},
+    "proposed_topics": {"type": "array", "minItems": 1, "items": {"type": "object", "required": ["id", "title", "evidence_claim_ids", "attendee_outcomes"], "properties": {"id": {"type": "string"}, "title": {"type": "string"}, "evidence_claim_ids": {"type": "array", "minItems": 1, "items": {"type": "string"}}, "attendee_outcomes": {"type": "array", "minItems": 1, "items": {"type": "string"}}}}},
+    "resume_purpose": {"type": "string"},
+    "cover_letter_purpose": {"type": "string"}
+  }
+}

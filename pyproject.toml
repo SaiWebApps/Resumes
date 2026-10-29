@@ -1,0 +1,25 @@
+[build-system]
+requires = ["hatchling>=1.24"]
+build-backend = "hatchling.build"
+
+[project]
+name = "application-pack"
+version = "0.1.0"
+description = "Model-neutral, hash-bound application package release engine"
+requires-python = ">=3.11"
+dependencies = [
+  "jsonschema>=4.21",
+  "pypdf>=5.0",
+  "python-docx>=1.1",
+  "reportlab>=4.2",
+  "Pillow>=10.0",
+]
+
+[project.scripts]
+application-pack = "application_pack.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/application_pack"]
+
+[tool.hatch.build.targets.wheel.force-include]
+"schemas" = "application_pack/schemas"

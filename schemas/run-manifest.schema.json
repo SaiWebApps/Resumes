@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://saiwebapps.github.io/Resumes/schemas/run-manifest.schema.json",
+  "title": "Application package run manifest",
+  "type": "object",
+  "required": ["schema_version", "run_id", "profile", "objective", "opportunity", "output_dir", "stage_sources", "artifact_sources", "constraints", "review_policy", "capabilities"],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "run_id": {"type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"},
+    "profile": {
+      "type": "object",
+      "required": ["id"],
+      "properties": {"id": {"type": "string", "minLength": 1}, "root": {"type": "string"}}
+    },
+    "objective": {"type": "string", "minLength": 1},
+    "audience": {"type": "string"},
+    "opportunity": {
+      "type": "object",
+      "required": ["url"],
+      "properties": {"url": {"type": "string", "format": "uri"}, "referral_context": {"type": "string"}}
+    },
+    "output_dir": {"type": "string", "minLength": 1},
+    "stage_sources": {
+      "type": "object",
+      "required": ["evidence_bundle", "opportunity_brief", "strategy", "resume", "coverage_ledger", "cover_letter", "design_contract", "change_set", "render_evidence", "review_evidence", "review_record"],
+      "additionalProperties": {"type": "string", "minLength": 1}
+    },
+    "artifact_sources": {
+      "type": "object",
+      "required": ["resume_pdf", "resume_docx", "cover_letter_pdf", "cover_letter_docx"],
+      "additionalProperties": {"type": "string", "minLength": 1}
+    },
+    "constraints": {
+      "type": "object",
+      "required": ["page_counts", "forbid_page_numbers"],
+      "properties": {
+        "page_counts": {
+          "type": "object",
+          "required": ["resume", "cover_letter"],
+          "properties": {"resume": {"type": "integer", "minimum": 1}, "cover_letter": {"type": "integer", "minimum": 1}}
+        },
+        "forbid_page_numbers": {"type": "boolean"}
+      }
+    },
+    "review_policy": {
+      "type": "object",
+      "required": ["allow_disclosed_fallback"],
+      "properties": {"allow_disclosed_fallback": {"type": "boolean"}}
+    },
+    "capabilities": {
+      "type": "object",
+      "required": ["filesystem", "research", "rendering", "visual_inspection"],
+      "additionalProperties": {"type": "boolean"}
+    }
+  }
+}

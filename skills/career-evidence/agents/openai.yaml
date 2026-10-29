@@ -1,0 +1,6 @@
+interface:
+  display_name: "Career Evidence"
+  short_description: "Build the traceable professional evidence bundle"
+  default_prompt: "Use $career-evidence to assemble the verified evidence and provenance for this application."
+policy:
+  allow_implicit_invocation: true

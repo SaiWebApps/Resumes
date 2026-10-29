@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Opportunity brief",
+  "type": "object",
+  "required": ["schema_version", "opportunity_url", "sources", "audiences", "selection_criteria", "tracks", "submission_requirements"],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "opportunity_url": {"type": "string", "format": "uri"},
+    "sources": {"type": "array", "minItems": 1, "items": {"type": "object", "required": ["url", "title"], "properties": {"url": {"type": "string"}, "title": {"type": "string"}}}},
+    "audiences": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+    "selection_criteria": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+    "tracks": {"type": "array", "items": {"type": "string"}},
+    "submission_requirements": {"type": "array", "items": {"type": "string"}}
+  }
+}

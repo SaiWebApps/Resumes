@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Application package release report",
+  "type": "object",
+  "required": ["schema_version", "run_id", "status", "score", "all_gates_required", "gates", "artifact_hashes"],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "run_id": {"type": "string"},
+    "status": {"enum": ["pass", "fail"]},
+    "score": {"type": "number", "minimum": 0, "maximum": 100},
+    "all_gates_required": {"const": true},
+    "gates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "label", "status", "errors"],
+        "properties": {
+          "id": {"type": "string"},
+          "label": {"type": "string"},
+          "status": {"enum": ["pass", "fail"]},
+          "errors": {"type": "array", "items": {"type": "string"}}
+        }
+      }
+    },
+    "artifact_hashes": {"type": "object", "additionalProperties": {"type": "string"}}
+  }
+}

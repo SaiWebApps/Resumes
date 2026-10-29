@@ -1,0 +1,6 @@
+interface:
+  display_name: "Speaker Pitch Author"
+  short_description: "Write an evidence-backed speaker pitch"
+  default_prompt: "Use $speaker-pitch-author to author the cover letter and proposed sessions for this opportunity."
+policy:
+  allow_implicit_invocation: true

@@ -1,0 +1,6 @@
+interface:
+  display_name: "Application Positioner"
+  short_description: "Choose the strongest supported application strategy"
+  default_prompt: "Use $application-positioner to choose the strongest evidence-backed positioning for this opportunity."
+policy:
+  allow_implicit_invocation: true

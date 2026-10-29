@@ -1,0 +1,253 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Evidence bundle",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "profile_id",
+    "sources",
+    "claims",
+    "provenance_requirements",
+    "conflicts"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "profile_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "kind",
+          "uri"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "kind": {
+            "enum": [
+              "primary",
+              "baseline",
+              "user_assertion",
+              "public",
+              "derived"
+            ]
+          },
+          "uri": {
+            "type": "string"
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          }
+        },
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "kind": {
+                  "enum": [
+                    "primary",
+                    "baseline",
+                    "user_assertion"
+                  ]
+                }
+              }
+            },
+            "then": {
+              "required": [
+                "sha256"
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "claims": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "text",
+          "source_ids",
+          "protected",
+          "entity_id",
+          "parent_entity_id",
+          "required_in"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "text": {
+            "type": "string"
+          },
+          "source_ids": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string"
+            }
+          },
+          "protected": {
+            "type": "boolean"
+          },
+          "entity_id": {
+            "type": "string"
+          },
+          "parent_entity_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "required_in": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+              "enum": [
+                "resume",
+                "cover_letter"
+              ]
+            }
+          },
+          "representation_anchors": {
+            "type": "object",
+            "propertyNames": {
+              "enum": [
+                "resume",
+                "cover_letter"
+              ]
+            },
+            "additionalProperties": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          },
+          "derived_from_claim_ids": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "verbatim_only": {
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    "provenance_requirements": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "child_entity_id",
+          "parent_entity_id"
+        ],
+        "properties": {
+          "child_entity_id": {
+            "type": "string"
+          },
+          "parent_entity_id": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "conflicts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "description",
+          "impact",
+          "material",
+          "status",
+          "source_ids"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "description": {
+            "type": "string",
+            "minLength": 1
+          },
+          "impact": {
+            "type": "string",
+            "minLength": 1
+          },
+          "material": {
+            "type": "boolean"
+          },
+          "status": {
+            "enum": [
+              "unresolved",
+              "resolved"
+            ]
+          },
+          "source_ids": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "decision": {
+            "type": "string",
+            "minLength": 1
+          },
+          "decision_source_ids": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "status": {
+                  "const": "resolved"
+                }
+              },
+              "required": [
+                "status"
+              ]
+            },
+            "then": {
+              "required": [
+                "decision",
+                "decision_source_ids"
+              ]
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    }
+  }
+}

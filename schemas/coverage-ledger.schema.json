@@ -1,0 +1,10 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Claim coverage ledger",
+  "type": "object",
+  "required": ["schema_version", "entries"],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "entries": {"type": "array", "items": {"type": "object", "required": ["claim_id", "status", "final_locations", "strength_preserved"], "properties": {"claim_id": {"type": "string"}, "status": {"enum": ["retained", "meaning_preserving_rewording", "merged", "approved_omission", "proposed_omission"]}, "final_locations": {"type": "array", "items": {"enum": ["resume", "cover_letter"]}}, "strength_preserved": {"type": "boolean"}, "approved_by_user": {"type": "boolean"}}}}
+  }
+}

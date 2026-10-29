@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "canonical_skills": "skills",
+  "targets": {
+    "codex": {
+      "default_skill_home": "~/.codex/skills",
+      "install": "symlink"
+    },
+    "claude": {
+      "default_skill_home": "${CLAUDE_CONFIG_DIR:-~/.claude}/skills",
+      "install": "symlink"
+    },
+    "chatgpt": {
+      "default_output": "dist/chatgpt",
+      "install": "skill-archives"
+    },
+    "generic": {
+      "default_output": "dist/generic",
+      "install": "portable-copy"
+    }
+  }
+}

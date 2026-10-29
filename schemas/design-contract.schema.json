@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Semantic design contract",
+  "type": "object",
+  "required": ["schema_version", "visible_elements", "semantic_styles", "page_constraints"],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "visible_elements": {"type": "array", "minItems": 1, "items": {"type": "object", "required": ["document_id", "element_id", "function", "reader_purpose"], "properties": {"document_id": {"enum": ["resume", "cover_letter"]}, "element_id": {"type": "string"}, "function": {"type": "string"}, "reader_purpose": {"type": "string"}}}},
+    "semantic_styles": {"type": "object"},
+    "page_constraints": {"type": "object"},
+    "format_adaptations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["format", "scope", "adaptation", "reason", "invariants"],
+        "properties": {
+          "format": {"enum": ["pdf", "docx"]},
+          "scope": {"type": "string", "minLength": 1},
+          "adaptation": {"type": "string", "minLength": 1},
+          "reason": {"type": "string", "minLength": 1},
+          "invariants": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}}
+        }
+      }
+    },
+    "metadata_policy": {
+      "type": "object",
+      "required": ["required_fields", "parity_scope", "accepted_format_defaults"],
+      "properties": {
+        "required_fields": {"type": "array", "items": {"type": "string", "minLength": 1}},
+        "parity_scope": {"type": "string", "minLength": 1},
+        "accepted_format_defaults": {"type": "array", "items": {"type": "string", "minLength": 1}}
+      }
+    },
+    "page_breaks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["document_id", "after_element_id", "reason", "previous_fill_ratio", "next_block_fraction"],
+        "properties": {
+          "document_id": {"enum": ["resume", "cover_letter"]},
+          "after_element_id": {"type": "string", "minLength": 1},
+          "reason": {"type": "string", "minLength": 1},
+          "previous_fill_ratio": {"type": "number", "minimum": 0, "maximum": 1},
+          "next_block_fraction": {"type": "number", "minimum": 0, "maximum": 1}
+        }
+      }
+    },
+    "atomic_phrases": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["document_id", "text"],
+        "properties": {
+          "document_id": {"enum": ["resume", "cover_letter"]},
+          "text": {"type": "string", "minLength": 1}
+        }
+      }
+    }
+  }
+}

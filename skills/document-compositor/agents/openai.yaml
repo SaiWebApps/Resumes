@@ -1,0 +1,6 @@
+interface:
+  display_name: "Document Compositor"
+  short_description: "Render and inspect application PDF and DOCX files"
+  default_prompt: "Use $document-compositor to render the approved application content and verify every page."
+policy:
+  allow_implicit_invocation: true

@@ -1,7 +1,14 @@
 # Build artifacts and intermediates
 node_modules/
+.venv/
+dist/
+runs/
+outputs/
 *.docx
+*.pdf
 *.log
+__pycache__/
+*.py[cod]
 
 # OS / editor / office cruft
 .DS_Store

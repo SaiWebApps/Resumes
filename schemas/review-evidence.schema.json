@@ -1,0 +1,106 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Hash-bound external review evidence",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "evidence_id",
+    "review_mode",
+    "primary_reviewer",
+    "artifact_hashes",
+    "page_image_hashes",
+    "reviewed_input_hashes",
+    "review_packet_sha256",
+    "exchanges",
+    "reciprocal_review",
+    "verdict",
+    "unresolved_findings"
+  ],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "evidence_id": {"type": "string", "minLength": 1},
+    "review_mode": {"enum": ["cross_model", "disclosed_fallback"]},
+    "primary_reviewer": {
+      "type": "object",
+      "required": ["provider", "model"],
+      "properties": {
+        "provider": {"type": "string", "minLength": 1},
+        "model": {"type": "string", "minLength": 1}
+      }
+    },
+    "artifact_hashes": {
+      "type": "object",
+      "required": ["resume_pdf", "resume_docx", "cover_letter_pdf", "cover_letter_docx"],
+      "additionalProperties": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+    },
+    "page_image_hashes": {
+      "type": "object",
+      "required": ["resume_pdf", "resume_docx", "cover_letter_pdf", "cover_letter_docx"],
+      "additionalProperties": {
+        "type": "array",
+        "minItems": 1,
+        "items": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+      }
+    },
+    "reviewed_input_hashes": {
+      "type": "object",
+      "required": [
+        "evidence-bundle.json",
+        "opportunity-brief.json",
+        "strategy.json",
+        "resume.json",
+        "coverage-ledger.json",
+        "cover-letter.json",
+        "design-contract.json",
+        "change-set.json"
+      ],
+      "additionalProperties": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+    },
+    "review_packet_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$",
+      "description": "SHA-256 of canonical JSON containing schema_version, artifact_hashes, page_image_hashes, and reviewed_input_hashes."
+    },
+    "exchanges": {
+      "type": "array",
+      "minItems": 2,
+      "items": {
+        "type": "object",
+        "required": [
+          "requester_provider",
+          "reviewer_provider",
+          "reviewer_model",
+          "review_packet_sha256",
+          "request",
+          "request_sha256",
+          "response",
+          "response_sha256",
+          "verdict"
+        ],
+        "properties": {
+          "requester_provider": {"type": "string", "minLength": 1},
+          "reviewer_provider": {"type": "string", "minLength": 1},
+          "reviewer_model": {"type": "string", "minLength": 1},
+          "review_packet_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+          "request": {"type": "string", "minLength": 1},
+          "request_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+          "response": {"type": "string", "minLength": 1},
+          "response_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+          "verdict": {"enum": ["pass", "block"]}
+        }
+      }
+    },
+    "reciprocal_review": {
+      "type": "object",
+      "required": ["completed", "primary_exchange_index", "reciprocal_exchange_index"],
+      "properties": {
+        "completed": {"const": true},
+        "primary_exchange_index": {"type": "integer", "minimum": 0},
+        "reciprocal_exchange_index": {"type": "integer", "minimum": 0}
+      }
+    },
+    "verdict": {"enum": ["pass", "block"]},
+    "findings": {"type": "array"},
+    "unresolved_findings": {"type": "array", "maxItems": 0}
+  }
+}

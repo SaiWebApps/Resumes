@@ -1,0 +1,6 @@
+interface:
+  display_name: "Resume Author"
+  short_description: "Write a strong evidence-preserving resume"
+  default_prompt: "Use $resume-author to author the structured resume from the accepted evidence and strategy."
+policy:
+  allow_implicit_invocation: true

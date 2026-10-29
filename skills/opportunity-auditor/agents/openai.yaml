@@ -1,0 +1,6 @@
+interface:
+  display_name: "Opportunity Auditor"
+  short_description: "Research the recipient and submission decision"
+  default_prompt: "Use $opportunity-auditor to build an evidence-backed brief for this opportunity."
+policy:
+  allow_implicit_invocation: true

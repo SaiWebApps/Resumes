@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Exact artifact review record",
+  "type": "object",
+  "required": ["schema_version", "mode", "provider", "artifact_hashes", "page_image_hashes", "reviewed_input_hashes", "external_review_evidence", "manual_checks", "unresolved_findings", "visual_review"],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "mode": {"enum": ["cross_model", "disclosed_fallback"]},
+    "provider": {"type": "string", "minLength": 1},
+    "fallback_disclosed": {"type": "boolean"},
+    "artifact_hashes": {"type": "object", "required": ["resume_pdf", "resume_docx", "cover_letter_pdf", "cover_letter_docx"], "additionalProperties": {"type": "string"}},
+    "page_image_hashes": {"type": "object", "required": ["resume_pdf", "resume_docx", "cover_letter_pdf", "cover_letter_docx"], "additionalProperties": {"type": "array", "minItems": 1, "items": {"type": "string", "pattern": "^[0-9a-f]{64}$"}}},
+    "reviewed_input_hashes": {
+      "type": "object",
+      "required": ["evidence-bundle.json", "opportunity-brief.json", "strategy.json", "resume.json", "coverage-ledger.json", "cover-letter.json", "design-contract.json", "change-set.json"],
+      "additionalProperties": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+    },
+    "external_review_evidence": {
+      "type": "object",
+      "required": ["path", "sha256"],
+      "properties": {
+        "path": {"const": "review-evidence.json"},
+        "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+      }
+    },
+    "manual_checks": {
+      "type": "object",
+      "required": ["full_page_readability", "physical_edge_clearance", "natural_content_flow", "continuous_page_review", "metric_visibility", "talk_taxonomy", "current_link_inventory", "docx_hanging_indents", "role_date_rows_atomic", "source_emphasis_preservation"],
+      "properties": {
+        "full_page_readability": {"type": "boolean"},
+        "physical_edge_clearance": {"type": "boolean"},
+        "natural_content_flow": {"type": "boolean"},
+        "continuous_page_review": {"type": "boolean"},
+        "metric_visibility": {"type": "boolean"},
+        "talk_taxonomy": {"type": "boolean"},
+        "current_link_inventory": {"type": "boolean"},
+        "docx_hanging_indents": {"type": "boolean"},
+        "role_date_rows_atomic": {"type": "boolean"},
+        "source_emphasis_preservation": {"type": "boolean"}
+      }
+    },
+    "findings": {"type": "array"},
+    "unresolved_findings": {"type": "array", "maxItems": 0},
+    "visual_review": {"type": "object", "required": ["all_pages_inspected", "blocking_defects"], "properties": {"all_pages_inspected": {"const": true}, "blocking_defects": {"type": "array", "maxItems": 0}}}
+  }
+}

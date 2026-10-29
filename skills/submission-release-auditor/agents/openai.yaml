@@ -1,0 +1,6 @@
+interface:
+  display_name: "Submission Release Auditor"
+  short_description: "Audit the exact package before release"
+  default_prompt: "Use $submission-release-auditor to audit the exact current artifacts and block any unresolved defect."
+policy:
+  allow_implicit_invocation: true

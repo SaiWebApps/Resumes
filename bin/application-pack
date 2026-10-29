@@ -1,0 +1,30 @@
+#!/usr/bin/env python3
+"""Portable source-tree launcher for the Application Package engine."""
+
+from __future__ import annotations
+
+import sys
+from pathlib import Path
+
+
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / "src"))
+
+if sys.version_info < (3, 11):
+    raise SystemExit(
+        "application-pack requires Python 3.11 or newer; "
+        f"this launcher is using {sys.version.split()[0]} at {sys.executable}"
+    )
+
+try:
+    from application_pack.cli import main
+except ModuleNotFoundError as exc:
+    dependency = exc.name or "an unknown dependency"
+    raise SystemExit(
+        f"application-pack requires {dependency!r}. "
+        f"Install the bundle dependencies with: {sys.executable} -m pip install {ROOT}"
+    ) from exc
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

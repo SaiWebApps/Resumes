@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Canonical resume content",
+  "type": "object",
+  "required": ["schema_version", "document_id", "semantic_text", "claims", "sections", "semantic_units"],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "document_id": {"const": "resume"},
+    "semantic_text": {"type": "string", "minLength": 1},
+    "claims": {"type": "array", "items": {"$ref": "#/$defs/claim"}},
+    "sections": {"type": "array", "items": {"type": "object", "required": ["id", "heading"], "properties": {"id": {"type": "string"}, "heading": {"type": "string"}}}},
+    "semantic_units": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/semantic_unit"}}
+  },
+  "$defs": {
+    "claim": {"type": "object", "required": ["claim_id", "text", "section_id", "entity_id", "parent_entity_id"], "properties": {"claim_id": {"type": "string"}, "text": {"type": "string"}, "section_id": {"type": "string"}, "entity_id": {"type": "string"}, "parent_entity_id": {"type": ["string", "null"]}}},
+    "semantic_unit": {
+      "type": "object",
+      "required": ["id", "text", "kind", "support_refs"],
+      "properties": {
+        "id": {"type": "string", "minLength": 1},
+        "text": {"type": "string", "minLength": 1},
+        "kind": {"enum": ["evidence", "strategy", "opportunity", "structure"]},
+        "support_refs": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "minLength": 1}}
+      },
+      "additionalProperties": false
+    }
+  }
+}
